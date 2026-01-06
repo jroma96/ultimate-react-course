@@ -142,3 +142,24 @@ function getBooks() {
 function getBook(id) {
   return data.find((d) => d.id === id);
 }
+
+const Book = getBook(2);
+Book;
+const { title, author, reviews, genres, pages } = Book;
+title;
+author;
+reviews;
+genres;
+const { goodreads, librarything } = reviews;
+const { rating, ...rest } = goodreads;
+rest;
+const newObject = { ...rest, newProperty: "new value" };
+const newGenres = [...genres, "Adult"];
+newGenres;
+newObject;
+const summary = `the book ${title} written by ${author}, with ${
+  pages > 200 ? "more than 200" : "less than 200"
+} pages was reviwed by goodreads and this is the score it got ${
+  goodreads.rating
+}`;
+console.log(summary);
