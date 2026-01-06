@@ -143,6 +143,7 @@ function getBook(id) {
   return data.find((d) => d.id === id);
 }
 
+/*
 const Book = getBook(2);
 Book;
 const { title, author, reviews, genres, pages } = Book;
@@ -164,3 +165,63 @@ const summary = `the book ${title} written by ${author}, with ${
 }`;
 console.log(summary);
 console.log(newGenres);
+*/
+
+const books = getBooks();
+books;
+const arr = [1, 2, 3, 4, 5];
+//Arrow function explicit return
+const mapFunc = arr.map((par) => {
+  return par * 2;
+});
+//Arrow function implicit return
+const mapFunc2 = arr.map((par) => par * 2);
+console.log(mapFunc);
+console.log(mapFunc2);
+
+const titles = books.map((book) => book.title);
+console.log(titles);
+
+const essentialData = books.map((book) => {
+  const { title, author } = book;
+  return {
+    title: title,
+    author: author,
+  };
+});
+
+console.log(essentialData);
+
+const longBooks = books.filter((book) => book.pages > 200);
+console.log(longBooks);
+
+const filteredBooks = books
+  .filter((book) => {
+    if (book.pages > 500) {
+      return true;
+    }
+    if (book.genres.length > 3) {
+      return true;
+    } else {
+      return false;
+    }
+  })
+  .map((book) => {
+    return {
+      title: book.title,
+      author: book.author,
+      pages: book.pages,
+    };
+  })
+  .sort((a, b) => a.pages - b.pages);
+filteredBooks;
+
+const allPages = filteredBooks.reduce((acc, book) => acc + book.pages, 0);
+allPages;
+const newArr = filteredBooks.map((el) => el).sort((a, b) => a - b);
+newArr;
+
+let body;
+fetch("https://pokeapi.co/api/v2/pokemon/")
+  .then((res) => res.json())
+  .then((data) => console.log(data));
