@@ -163,3 +163,4 @@ const summary = `the book ${title} written by ${author}, with ${
   goodreads.rating
 }`;
 console.log(summary);
+console.log(newGenres);
