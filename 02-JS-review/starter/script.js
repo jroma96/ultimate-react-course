@@ -221,7 +221,17 @@ allPages;
 const newArr = filteredBooks.map((el) => el).sort((a, b) => a - b);
 newArr;
 
-let body;
-fetch("https://pokeapi.co/api/v2/pokemon/")
+const res = await fetch("https://pokeapi.co/api/v2/pokemon/dragapult");
+
+//with await
+if (!res.ok) {
+  console.log("Error obtaining response");
+} else {
+  const data = await res.json();
+  console.log(data);
+}
+
+//with then
+const res2 = await fetch("https://pokeapi.co/api/v2/pokemon/dragapult")
   .then((res) => res.json())
   .then((data) => console.log(data));
