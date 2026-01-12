@@ -39,7 +39,6 @@ function Header() {
 }
 
 function Row({ item1, item2 }) {
-  console.log(item1, item2);
   return (
     <div
       style={{
@@ -64,14 +63,19 @@ function Row({ item1, item2 }) {
 }
 
 function Menu({ pizzaData }) {
-  const data = pizzaData;
-  console.log(data);
+  const rowArr = [];
+  for (let i = 0; i < pizzaData.length; i += 2) {
+    rowArr.push([pizzaData[i], pizzaData[i + 1]]);
+  }
+  const data = rowArr;
+  console.log(data.length);
+  console.log(rowArr);
   return (
     <div className="menu">
       <h2 style={{ fontSize: "48px", color: "gray" }}>Our Menu</h2>
-      <Row item1={data[0]} item2={data[1]} />
-      <Row item1={data[2]} item2={data[3]} />
-      <Row item1={data[4]} item2={data[5]} />
+      {rowArr.map((row) => (
+        <Row item1={row[0]} item2={row[1]} />
+      ))}
     </div>
   );
 }
