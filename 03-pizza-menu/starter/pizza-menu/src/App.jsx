@@ -81,7 +81,15 @@ function Menu({ pizzaData }) {
 }
 
 function Footer() {
-  return <footer className="footer">Currently Open on Guatemala</footer>;
+  const hour = new Date().getHours();
+  const openHour = 12;
+  const closeHour = 22;
+  const isOpen = hour >= openHour && hour <= closeHour;
+  return (
+    <footer className="footer">
+      <p>{isOpen ? "We're currently open" : "We're closed"}</p>
+    </footer>
+  );
 }
 
 export default App;
