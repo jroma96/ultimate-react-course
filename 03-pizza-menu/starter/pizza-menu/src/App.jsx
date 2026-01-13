@@ -14,19 +14,21 @@ function App() {
   );
 }
 
-function Pizza({ img, name, ingredients }) {
+function Pizza({ img, name, ingredients, soldOut }) {
   return (
-    <div className="pizza div">
-      <h3 className="pizza h3">
-        <b style={{ color: "gray" }}>{name}</b>
-      </h3>
-      <img
-        className="pizza img"
-        src={new URL(`${img}`, import.meta.url).href}
-        alt={name}
-      />
-      <p className="pizza p">{ingredients}</p>
-    </div>
+    <li className={soldOut ? "sold-out" : "pizza"}>
+      <div className="pizza div">
+        <h3 className="pizza h3">
+          <b style={{ color: "gray" }}>{name}</b>
+        </h3>
+        <img
+          className="pizza sold-out"
+          src={new URL(`${img}`, import.meta.url).href}
+          alt={name}
+        />
+        <p className="pizza p">{ingredients}</p>
+      </div>
+    </li>
   );
 }
 
@@ -52,11 +54,13 @@ function Row({ item1, item2 }) {
         name={item1.name}
         img={item1.photoName}
         ingredients={item1.ingredients}
+        soldOut={item1.soldOut}
       />
       <Pizza
         name={item2.name}
         img={item2.photoName}
         ingredients={item2.ingredients}
+        soldOut={item2.soldOut}
       />
     </div>
   );

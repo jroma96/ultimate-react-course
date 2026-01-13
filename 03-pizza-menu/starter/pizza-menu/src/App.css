@@ -41,6 +41,10 @@
   color: #888;
 }
 
+.pizza.sold-out {
+  color: #888;
+}
+
 .container {
   max-width: 80rem;
   margin: 0 auto;
